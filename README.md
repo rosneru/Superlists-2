@@ -49,6 +49,22 @@ To activate the environment call:
 
 Where {user-account} has to be replaced by your Windows login.
 
+#### Activate the virtual environment from Git Bash
+
+From page 160 of the book, Git Bash is required on Windows to use the
+staging server. Activating the  virtual environment then goes like this:
+
+    $ source /C/Users/{user-account}/.virtualenvs/webapp-env/Scripts/activate
+
+Then you can enter the development directory and run the functional
+tests:
+
+    $ cd /E/Dev/Superlists
+    $ STAGING_SERVER=superlists.your-domain.com python manage.py test functional_tests
+    ...
+    ...
+    AssertionError: 'TODO' not found in 'Welcome to nginx!'
+
 **If that fails because of execution policy:**
 With PowerShell in admin mode, check if script execution is not allowed:
 
@@ -94,4 +110,5 @@ To test that you’ve got this working, open up a Bash console and you should be
     
     This program is subject to the terms of the Mozilla Public License 2.0. 
     You can obtain a copy of the license at https://mozilla.org/MPL/2.0/.
+
 
