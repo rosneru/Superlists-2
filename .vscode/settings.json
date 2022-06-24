@@ -10,6 +10,7 @@
   "python.linting.flake8Enabled": true,
   "cSpell.words": [
     "forloop",
-    "itemey"
+    "itemey",
+    "superlists"
   ],
 }
