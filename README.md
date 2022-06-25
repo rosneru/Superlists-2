@@ -112,3 +112,9 @@ To test that you’ve got this working, open up a Bash console and you should be
     You can obtain a copy of the license at https://mozilla.org/MPL/2.0/.
 
 
+#### Install Fabric (chapter 11)
+
+Fabric meanwhile has changed and not uses contrib etc. To use the code
+of the book install an < 2.0 version of Fabric
+
+    pip install fabric<2.0
