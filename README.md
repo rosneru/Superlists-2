@@ -115,7 +115,7 @@ To test that you’ve got this working, open up a Bash console and you should be
 #### Install Fabric (chapter 11)
 
 Fabric meanwhile has changed and not uses contrib etc. To use the code
-of the book install an < 2.0 version of Fabric
+of the book install a version < 2.0 of Fabric
 
     pip install fabric<2.0
 
