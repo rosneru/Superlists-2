@@ -118,3 +118,9 @@ Fabric meanwhile has changed and not uses contrib etc. To use the code
 of the book install an < 2.0 version of Fabric
 
     pip install fabric<2.0
+
+**NOTE to myself:** See the local file 
+
+    (WDB) (Python) (Django) - Notes to ebook Test driven development (Percival).md
+
+for informations how to use the `fabric` command when server uses *ssh public key* authentication and a non-standard SSH port.
