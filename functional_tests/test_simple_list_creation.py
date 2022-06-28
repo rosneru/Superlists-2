@@ -16,26 +16,26 @@ class NewVisitorTest(FunctionalTest):
         self.assertIn('TODO', header_text)
 
         # She is invited to enter a to-do item straight away
-        inputbox = self.browser.find_element_by_id('id_new_item')
-        self.assertEqual(inputbox.get_attribute('placeholder'),
+        input_box = self.browser.find_element_by_id('id_new_item')
+        self.assertEqual(input_box.get_attribute('placeholder'),
                          'Enter a TODO item')
 
         # She types "Buy peacock feathers" into a text box (Edith's
         # hobby is tying fly-fishing lures)
-        inputbox.send_keys('Buy peacock feathers')
+        input_box.send_keys('Buy peacock feathers')
 
         # When she hits enter, the page updates, and now the page lists
         # "1: Buy peacock feathers" as an item in a todo list table
-        inputbox.send_keys(Keys.ENTER)
+        input_box.send_keys(Keys.ENTER)
         time.sleep(1)
         self.wait_for_row_in_list_table('1: Buy peacock feathers')
 
         # There is still a text box inviting her to add another item.
         # She enters "Use peacock feathers to make a fly" (Edith is very
         # methodical)
-        inputbox = self.browser.find_element_by_id('id_new_item')
-        inputbox.send_keys('Use peacock feathers to make a fly')
-        inputbox.send_keys(Keys.ENTER)
+        input_box = self.browser.find_element_by_id('id_new_item')
+        input_box.send_keys('Use peacock feathers to make a fly')
+        input_box.send_keys(Keys.ENTER)
         time.sleep(1)
 
         # The page updates again, and now shows both items on her list
@@ -48,9 +48,9 @@ class NewVisitorTest(FunctionalTest):
     def test_multiple_users_can_start_lists_at_different_urls(self):
         # Edith starts a new to-do list
         self.browser.get(self.live_server_url)
-        inputbox = self.browser.find_element_by_id('id_new_item')
-        inputbox.send_keys('Buy peacock feathers')
-        inputbox.send_keys(Keys.ENTER)
+        input_box = self.browser.find_element_by_id('id_new_item')
+        input_box.send_keys('Buy peacock feathers')
+        input_box.send_keys(Keys.ENTER)
         self.wait_for_row_in_list_table('1: Buy peacock feathers')
 
         # She notices that her list has a unique URL
@@ -72,9 +72,9 @@ class NewVisitorTest(FunctionalTest):
 
         # Francis starts a new list by entering a new item. He's less
         # interesting than Edith..
-        inputbox = self.browser.find_element_by_id('id_new_item')
-        inputbox.send_keys('Buy milk')
-        inputbox.send_keys(Keys.ENTER)
+        input_box = self.browser.find_element_by_id('id_new_item')
+        input_box.send_keys('Buy milk')
+        input_box.send_keys(Keys.ENTER)
         self.wait_for_row_in_list_table('1: Buy milk')
 
         # Francis gets his own unique URL
