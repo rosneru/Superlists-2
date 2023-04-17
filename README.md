@@ -10,21 +10,8 @@ Development with Python: Obey the Testing Goat* by *Harry Percival*
 
 [Link to the book](http://www.obeythetestinggoat.com/ "Obey the Testing Goat!")
 
-
-
-
-### Development environment
-
-* Windows 10 Professional
-* Visual Studio Code
-* Python 3.6
-* Geckodriver 0.21 and Firefox
-* Django 1.11
-* Selenium 3.4.3
-
-
-### Initial Setup (only necessary after checkout)
-#### Create virtual environment
+# Initial Setup (only necessary after checkout)
+## Create virtual environment
 
 Open a cmd in your Windows user directory.
 
@@ -32,10 +19,10 @@ Create the directory .virtualenvs and enter it.
 
 Now create the virtual environment:
 
-    virtualenv webapp-env
+    # Create a virtualenv
+    python -m venv webapp-env
 
-
-#### Activate the virtual environment
+## Activate the virtual environment
 To activate the environment call:
     
     # WINDOWS when using CMD:
@@ -49,7 +36,7 @@ To activate the environment call:
 
 Where {user-account} has to be replaced by your Windows login.
 
-#### Activate the virtual environment from Git Bash
+## Activate the virtual environment from Git Bash
 
 From page 160 of the book, Git Bash is required on Windows to use the
 staging server. Activating the  virtual environment then goes like this:
@@ -90,7 +77,7 @@ virtual environments. Select the newly created one.
 
 Django should be installed while the virtual env is activated:
 
-    pip3 install django selenium
+    pip install "django==3.2" selenium gunicorn fabric invocations
 
 #### Install Gecko driver
 
@@ -110,17 +97,3 @@ To test that you’ve got this working, open up a Bash console and you should be
     
     This program is subject to the terms of the Mozilla Public License 2.0. 
     You can obtain a copy of the license at https://mozilla.org/MPL/2.0/.
-
-
-#### Install Fabric (chapter 11)
-
-Fabric meanwhile has changed and not uses contrib etc. To use the code
-of the book install a version < 2.0 of Fabric
-
-    pip install fabric<2.0
-
-**NOTE to myself:** See the local file 
-
-    (WDB) (Python) (Django) - Notes to ebook Test driven development (Percival).md
-
-for informations how to use the `fabric` command when server uses *ssh public key* authentication and a non-standard SSH port.
