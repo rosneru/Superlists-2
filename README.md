@@ -77,7 +77,7 @@ virtual environments. Select the newly created one.
 
 Django should be installed while the virtual env is activated:
 
-    pip install "django==3.2" selenium gunicorn fabric invocations
+    pip install "django==3.2" selenium gunicorn fabric invocations patchwork
 
 #### Install Gecko driver
 
