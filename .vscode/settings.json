@@ -17,4 +17,5 @@
     "itemey",
     "superlists"
   ],
+  "python.analysis.typeCheckingMode": "basic",
 }

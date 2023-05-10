@@ -1,6 +1,4 @@
 from fabric import task, Connection
-import patchwork.files as files
-
 import random
 
 REPO_URL = 'https://github.com/rosneru/Superlists-2'
@@ -13,7 +11,7 @@ def deploy(c: Connection):
     with c.cd(site_folder):
         _get_latest_source(c)
         _update_virtualenv(c)
-        _create_or_update_dotenv()
+        _create_or_update_dotenv(c)
         _update_static_files(c)
         _update_database(c)
 
@@ -32,14 +30,23 @@ def _update_virtualenv(c: Connection):
 
 
 def _create_or_update_dotenv(c: Connection):
-    files.append(c, '.env', 'DJANGO_DEBUG_FALSE=y')
-    files.append(c, '.env', f'SITENAME={c.host}')
-    current_contents = c.run('cat .env')
+    # Append line 'DJANGO_DEBUG_FALSE=y' to .env (if it not already exists)
+    c.run("grep -qxF 'DJANGO_DEBUG_FALSE=y' .env || "
+          "echo 'DJANGO_DEBUG_FALSE=y' >> .env")
+
+    # Append line 'SITENAME=hostname' to .env (if it not already exists)
+    c.run(f"grep -qxF 'SITENAME={c.host}' .env || "
+          f"echo 'SITENAME={c.host}' >> .env")
+
+    # Create a Django secret key if none already exists
+    current_contents = str(c.run('cat .env'))
     if 'DJANGO_SECRET_KEY' not in current_contents:
         new_secret = ''.join(random.SystemRandom().choices(
             'abcdefghijklmnopqrstuvwxyz0123456789', k=50
         ))
-        files.append(c, '.env', f'DJANGO_SECRET_KEY={new_secret}')
+
+        # Append a line with new Django secret key to .env
+        c.run(f"echo 'DJANGO_SECRET_KEY={new_secret}' >> .env")
 
 
 def _update_static_files(c: Connection):
