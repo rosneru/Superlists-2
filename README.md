@@ -39,9 +39,14 @@ Where {user-account} has to be replaced by your Windows login.
 ## Activate the virtual environment from Git Bash
 
 From page 160 of the book, Git Bash is required on Windows to use the
-staging server. Activating the  virtual environment then goes like this:
+staging server. Activating the virtual environment then goes like this:
 
     $ source /C/Users/{user-account}/.virtualenvs/webapp-env/Scripts/activate
+
+After first activation of Git Bash verify that django and selenium are installed
+in the needed version:
+
+  pip install "django==3.2" "selenium<4"
 
 Then you can enter the development directory and run the functional
 tests:
@@ -77,7 +82,7 @@ virtual environments. Select the newly created one.
 
 Django should be installed while the virtual env is activated:
 
-    pip install "django==3.2" selenium gunicorn fabric invocations
+    pip install "django==3.2" "selenium<4" gunicorn fabric invocations
 
 #### Install Gecko driver
 
