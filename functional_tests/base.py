@@ -14,6 +14,9 @@ class FunctionalTest(StaticLiveServerTestCase):
         staging_server = os.environ.get('STAGING_SERVER')
         if staging_server:
             self.live_server_url = 'http://' + staging_server
+            # TODO: Change it? According to:
+            # https://stackoverflow.com/questions/51117397/why-method-cant-access-class-variable
+            # __class__.live_server_url = 'http://' + staging_server
 
     def tearDown(self):
         self.browser.quit()
@@ -41,3 +44,5 @@ class FunctionalTest(StaticLiveServerTestCase):
                     raise e
                 time.sleep(0.5)
 
+    def get_item_input_box(self):
+        return self.browser.find_element_by_id('id_text')
