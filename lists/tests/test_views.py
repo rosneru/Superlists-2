@@ -1,4 +1,5 @@
 from django.test import TestCase
+from django.utils.html import escape
 from lists.forms import ItemForm
 from lists.models import Item, List
 
@@ -32,7 +33,7 @@ class NewListTest(TestCase):
         response = self.client.post('/lists/new', data={'text': ''})
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'home.html')
-        expected_error = "You can&#x27;t have an empty list item"
+        expected_error = escape("You can't have an empty list item")
         self.assertContains(response, expected_error)
 
     def test_invalid_list_items_arent_saved(self):
@@ -100,5 +101,5 @@ class ListViewTest(TestCase):
         )
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'list.html')
-        expected_error = 'You can&#x27;t have an empty list item'
+        expected_error = escape("You can't have an empty list item")
         self.assertContains(response, expected_error)
