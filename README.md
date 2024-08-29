@@ -36,6 +36,42 @@ To activate the environment call:
 
 Where {user-account} has to be replaced by your Windows login.
 
+## Install requirements.txt
+
+    pip install -r requirements.txt
+
+## Create database
+
+    > mkdir database
+    > python manage.py migrate
+            Operations to perform:
+            Apply all migrations: auth, contenttypes, lists, sessions
+            Running migrations:
+            Applying contenttypes.0001_initial... OK
+            Applying contenttypes.0002_remove_content_type_name... OK
+            Applying auth.0001_initial... OK
+            Applying auth.0002_alter_permission_name_max_length... OK
+            Applying auth.0003_alter_user_email_max_length... OK
+            Applying auth.0004_alter_user_username_opts... OK
+            Applying auth.0005_alter_user_last_login_null... OK
+            Applying auth.0006_require_contenttypes_0002... OK
+            Applying auth.0007_alter_validators_add_error_messages... OK
+            Applying auth.0008_alter_user_username_max_length... OK
+            Applying auth.0009_alter_user_last_name_max_length... OK
+            Applying auth.0010_alter_group_name_max_length... OK
+            Applying auth.0011_update_proxy_permissions... OK
+            Applying auth.0012_alter_user_first_name_max_length... OK
+            Applying lists.0001_initial... OK
+            Applying lists.0002_item_text... OK
+            Applying lists.0003_list... OK
+            Applying lists.0004_item_list... OK
+            Applying lists.0005_alter_item_unique_together... OK
+            Applying sessions.0001_initial... OK
+    >
+
+Read more:
+[5.11. Creating Our Production Database with migrate](https://www.obeythetestinggoat.com/book/chapter_05_post_and_database.html#_creating_our_production_database_with_migrate)
+
 ## Activate the virtual environment from Git Bash
 
 From page 160 of the book, Git Bash is required on Windows to use the
